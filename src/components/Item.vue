@@ -1,11 +1,59 @@
 <template>
-  <div class="story">
-    <span class="score">{{ story.data.score }}</span>
-    <router-link :to="{ path: '/story/' + story.data.id }">{{ story.data.title }}<span>{{ story.data.url | host }}</span></router-link><br />
-    <span class="meta">
-      by {{ story.data.by }} | {{ story.data.time }} Ago | {{ story.data.descendants }} comments
-    </span>
-  </div>
+  <v-card
+    class="mx-auto post-card"
+    flat
+    outlined
+    max-width="550"
+  >
+    <v-container fluid>
+      <v-row justify="space-between" no-gutters>
+        <v-col>
+          <v-row
+            class="flex-column ma-0 fill-height"
+            justify="center"
+            no-gutters
+          >
+            <v-col class="px-0">
+              <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col class="px-0">
+              <v-btn icon>
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+        <v-col>
+          <v-card-subtitle class="pb-0"><v-icon>mdi-heart</v-icon> r/Jobs • Posted by u/USERNAME 14 hours ago</v-card-subtitle>
+
+          <v-card-text class="text--primary">
+            <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, ex commodo congue dapibus, ligula augue finibus purus, a tristique enim lacus et justo. Nam lobortis eros eget dui vehicula suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed luctus magna in nibh congue placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum lobortis vitae nulla nec pretium. Mauris malesuada mattis nibh a.</div>
+          </v-card-text>
+
+          <v-img
+            class="white--text align-end"
+            height="400px"
+            src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+          >
+          </v-img>
+
+          <v-card-actions>
+            <v-row
+              class="actions-row"
+              align="center"
+            >
+              <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ story.data.score }} comments</span>
+              <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
+              <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
+              <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
+            </v-row>
+          </v-card-actions>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
@@ -16,36 +64,16 @@
 </script>
 
 <style scoped>
-  .story {
-    background-color: #fff;
-    padding: 20px 30px 20px 80px;
-    border-bottom: 1px solid #eee;
-    position: relative;
-    line-height: 20px;
-  }
-  .score {
-    color: #f60;
-    font-size: 1.1em;
-    font-weight: 700;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 80px;
-    text-align: center;
-    margin-top: -10px;
-  }
-  .story a {
-    color: #34495e;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .story a span {
-    font-size: 0.85em;
+  .actions-row {
     margin-left: 10px;
-    color: #828282;
   }
-  .story .meta {
-    font-size: 0.85em;
-    color: #828282;
+  .post-card {
+    margin-bottom: 20px;
+  }
+  .interactive-item {
+    margin-right: 10px;
+  }
+  .action-icon {
+    margin-right: 5px;
   }
 </style>
