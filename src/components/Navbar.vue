@@ -32,7 +32,7 @@
       </template>
       <v-list>
         <v-list-item
-          v-for="(item, index) in items"
+          v-for="(item, index) in subreddits"
           :key="index"
         >
           <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -65,7 +65,7 @@
           v-on="on"
           depressed
         >
-          Username
+          MarkG
           <v-icon right>mdi-menu-down</v-icon>
         </v-btn>
       </template>
@@ -90,6 +90,11 @@ export default {
       { title: 'User Settings' },
       { title: 'Night Mode' },
       { title: 'Reddit Coins' },
+    ],
+    subreddits: [
+      { title: 'r/jobs' },
+      { title: 'r/podcasts' },
+      { title: 'r/hobbies' }
     ],
     disabled: false,
     absolute: false,

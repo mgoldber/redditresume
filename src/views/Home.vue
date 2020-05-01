@@ -1,12 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <item v-for="story in stories" :key="story.data.id" :story="story"></item>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-export default {
-  name: 'home',
-}
+  import Item from '@/views/Item.vue';
+
+  export default {
+    name: "home",
+    components: {
+      'item': Item,
+    },
+    data: function() {
+      return {
+        err: "",
+        stories: this.$store.state.topStories,
+      };
+    },
+    created: function() {
+      if (this.$store.state.topStories.length === 0) this.$store.dispatch('fetch_top_stories');
+    }
+  }
 </script>
+
+<style scoped>
+  .home {
+    margin-top: 75px;
+  }
+</style>

@@ -2,20 +2,17 @@
   <v-app class="container">
     <navbar></navbar>
     <router-view />
-    <home></home>
   </v-app>
 </template>
 
 <script>
   import Navbar from '@/components/Navbar'
-  import Home from '@/components/Home'
 
   export default {
     name: 'App',
 
     components: {
       Navbar,
-      Home
     },
 
     data: () => ({
@@ -30,6 +27,7 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    background: transparent !important
   }
   @media (min-width: 768px) {
     .container {
@@ -43,7 +41,7 @@
   }
   @media (min-width: 1200px) {
     .container {
-      width: 1170px;
+      width: 750px;
     }
   }
 </style>

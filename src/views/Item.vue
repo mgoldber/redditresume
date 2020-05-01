@@ -3,7 +3,7 @@
       class="mx-auto post-card"
       flat
       outlined
-      max-width="550"
+      max-width="750"
       link
       hover
       :to="{ path: '/story/' + story.data.id }"
