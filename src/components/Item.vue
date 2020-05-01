@@ -5,8 +5,8 @@
     outlined
     max-width="550"
   >
-    <v-container fluid>
-      <v-row justify="space-between" no-gutters>
+    <v-container fill-height>
+      <v-layout align-start row>
         <v-col>
           <v-row
             class="flex-column ma-0 fill-height"
@@ -15,18 +15,23 @@
           >
             <v-col class="px-0">
               <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
+                <v-icon>mdi-arrow-up-bold</v-icon>
               </v-btn>
             </v-col>
             <v-col class="px-0">
               <v-btn icon>
-                <v-icon>mdi-heart</v-icon>
+                <span>{{ story.data.score }}</span>
+              </v-btn>
+            </v-col>
+            <v-col class="px-0">
+              <v-btn icon>
+                <v-icon>mdi-arrow-down-bold</v-icon>
               </v-btn>
             </v-col>
           </v-row>
         </v-col>
         <v-col>
-          <v-card-subtitle class="pb-0"><v-icon>mdi-heart</v-icon> r/Jobs • Posted by u/USERNAME 14 hours ago</v-card-subtitle>
+          <v-card-subtitle class="pb-0"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/USERNAME 14 hours ago</v-card-subtitle>
 
           <v-card-text class="text--primary">
             <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, ex commodo congue dapibus, ligula augue finibus purus, a tristique enim lacus et justo. Nam lobortis eros eget dui vehicula suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed luctus magna in nibh congue placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum lobortis vitae nulla nec pretium. Mauris malesuada mattis nibh a.</div>
@@ -51,7 +56,7 @@
             </v-row>
           </v-card-actions>
         </v-col>
-      </v-row>
+      </v-layout>
     </v-container>
   </v-card>
 </template>
