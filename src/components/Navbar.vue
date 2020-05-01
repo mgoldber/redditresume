@@ -4,7 +4,7 @@
     color="primary"
     dark
   >
-    <span>Logo</span>
+    <span><v-icon>mdi-reddit</v-icon></span>
     <v-text-field
       solo-inverted
       flat
