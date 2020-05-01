@@ -4,17 +4,12 @@
     color="primary"
     dark
   >
-    <span><v-icon>mdi-reddit</v-icon></span>
-    <v-text-field
-      solo-inverted
-      flat
-      hide-details
-      label="Search"
-    />
-
-    <v-spacer />
+    <div class=icon-container>
+      <span class="icon"><v-icon>mdi-reddit</v-icon></span>
+      <span>MEDDIT</span>
+    </div>
     <v-menu
-      v-model="value"
+      v-model="communities"
       :disabled="disabled"
       :absolute="absolute"
       :open-on-hover="openOnHover"
@@ -28,8 +23,50 @@
           color="primary"
           dark
           v-on="on"
+          depressed
+        >
+          <v-icon left>mdi-ufo-outline</v-icon>
+          Home
+          <v-icon right>mdi-menu-down</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+    <v-spacer />
+    <v-text-field
+      solo-inverted
+      flat
+      hide-details
+      label="Search"
+    />
+
+    <v-spacer />
+    <v-menu
+      v-model="user"
+      :disabled="disabled"
+      :absolute="absolute"
+      :open-on-hover="openOnHover"
+      :close-on-click="closeOnClick"
+      :close-on-content-click="closeOnContentClick"
+      :offset-x="offsetX"
+      :offset-y="offsetY"
+    >
+      <template v-slot:activator="{ on }">
+        <v-btn
+          color="primary"
+          dark
+          v-on="on"
+          depressed
         >
           Username
+          <v-icon right>mdi-menu-down</v-icon>
         </v-btn>
       </template>
       <v-list>
@@ -57,7 +94,8 @@ export default {
     disabled: false,
     absolute: false,
     openOnHover: false,
-    value: false,
+    user: false,
+    communities: false,
     closeOnClick: true,
     closeOnContentClick: true,
     offsetX: false,
@@ -67,6 +105,12 @@ export default {
 </script>
 
 <style scoped>
+  .icon-container {
+    margin-right: 50px;
+  }
+  .icon {
+    margin-right: 7px;
+  }
   .pure-menu {
     background-color: #ffffff;
   }
