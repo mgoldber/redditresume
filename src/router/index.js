@@ -1,15 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/views/Home.vue'
-import Single from "@/views/Single"
+import TheHomePage from '@/components/pages/TheHomePage.vue'
+import TheJobsPage from '@/components/pages/TheJobsPage.vue'
+import Single from '@/views/Single'
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'home',
+    component: TheHomePage
+  },
+  {
+    path: '/jobs',
+    name: 'jobs',
+    component: TheJobsPage
   },
   {
     path: "/story/:id",

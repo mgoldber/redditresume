@@ -24,6 +24,7 @@
           dark
           v-on="on"
           depressed
+          class="subredditBtn"
         >
           <v-icon left>mdi-ufo-outline</v-icon>
           Home
@@ -34,8 +35,9 @@
         <v-list-item
           v-for="(item, index) in subreddits"
           :key="index"
+          :to="item.name.slice(2)"
         >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -84,28 +86,29 @@
 <script>
 export default {
   name: "Navbar",
-  data: () => ({
-    items: [
-      { title: 'My Profile' },
-      { title: 'User Settings' },
-      { title: 'Night Mode' },
-      { title: 'Reddit Coins' },
-    ],
-    subreddits: [
-      { title: 'r/jobs' },
-      { title: 'r/podcasts' },
-      { title: 'r/hobbies' }
-    ],
-    disabled: false,
-    absolute: false,
-    openOnHover: false,
-    user: false,
-    communities: false,
-    closeOnClick: true,
-    closeOnContentClick: true,
-    offsetX: false,
-    offsetY: true,
-  })
+  data: function() {
+    return {
+      items: [
+        { title: 'My Profile' },
+        { title: 'User Settings' },
+        { title: 'Night Mode' },
+        { title: 'Reddit Coins' },
+      ],
+      subreddits: this.$store.state.subreddits,
+      disabled: false,
+      absolute: false,
+      openOnHover: false,
+      user: false,
+      communities: false,
+      closeOnClick: true,
+      closeOnContentClick: true,
+      offsetX: false,
+      offsetY: true,
+    }
+  },
+  created: function() {
+    if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
+  }
 }
 </script>
 
@@ -121,5 +124,8 @@ export default {
   }
   .pure-menu a {
     color: 000000;
+  }
+  .subredditBtn {
+    width: 200px;
   }
 </style>
