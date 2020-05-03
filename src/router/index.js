@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TheHomePage from '@/components/pages/TheHomePage.vue'
 import TheJobsPage from '@/components/pages/TheJobsPage.vue'
-import Single from '@/views/Single'
+import ADetailedPost from '@/components/cards/ADetailedPost.vue'
 
 Vue.use(VueRouter)
 
@@ -18,9 +18,9 @@ Vue.use(VueRouter)
     component: TheJobsPage
   },
   {
-    path: "/story/:id",
-    name: "Single",
-    component: Single
+    path: "/post/:id/",
+    name: "ADetailedPost",
+    component: ADetailedPost
   }
 ]
 

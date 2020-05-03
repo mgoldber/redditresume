@@ -6,7 +6,7 @@
       max-width="750"
       link
       hover
-      :to="{ path: '/story/' + story.data.id }"
+      :to="{ path: '/post/' + post._id }"
     >
       <v-container fluid>
         <v-row justify="space-between">
@@ -22,7 +22,7 @@
               </v-col>
               <v-col class="px-0">
                 <v-btn icon>
-                  <span>{{ story.data.score }}</span>
+                  <span>{{ post.votes }}</span>
                 </v-btn>
               </v-col>
               <v-col class="px-0">
@@ -41,10 +41,10 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/USERNAME 14 hours ago</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-              <v-card-text class="text--primary">
-                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas, ex commodo congue dapibus, ligula augue finibus purus, a tristique enim lacus et justo. Nam lobortis eros eget dui vehicula suscipit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed luctus magna in nibh congue placerat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum lobortis vitae nulla nec pretium. Mauris malesuada mattis nibh a.</div>
+              <v-card-text class="text--primary heading">
+                <div>{{ post.title }}</div>
               </v-card-text>
 
               <v-img
@@ -59,7 +59,7 @@
                   class="actions-row"
                   align="center"
                 >
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ story.data.score }} comments</span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ post.comments.length }} comments</span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
@@ -74,8 +74,8 @@
 
 <script>
   export default {
-    name: 'Item',
-    props: ["story"]
+    name: 'APost',
+    props: ["post"]
   };
 </script>
 
@@ -97,5 +97,9 @@
   }
   .upvote-bar {
     background-color: '#ffffff';
+  }
+  .heading {
+    margin-top: 10px;
+    font-size: 18px;
   }
 </style>

@@ -84,32 +84,32 @@
 </template>
 
 <script>
-export default {
-  name: "Navbar",
-  data: function() {
-    return {
-      items: [
-        { title: 'My Profile' },
-        { title: 'User Settings' },
-        { title: 'Night Mode' },
-        { title: 'Reddit Coins' },
-      ],
-      subreddits: this.$store.state.subreddits,
-      disabled: false,
-      absolute: false,
-      openOnHover: false,
-      user: false,
-      communities: false,
-      closeOnClick: true,
-      closeOnContentClick: true,
-      offsetX: false,
-      offsetY: true,
+  export default {
+    name: "Navbar",
+    data: function() {
+      return {
+        items: [
+          { title: 'My Profile' },
+          { title: 'User Settings' },
+          { title: 'Night Mode' },
+          { title: 'Reddit Coins' },
+        ],
+        subreddits: this.$store.state.subreddits,
+        disabled: false,
+        absolute: false,
+        openOnHover: false,
+        user: false,
+        communities: false,
+        closeOnClick: true,
+        closeOnContentClick: true,
+        offsetX: false,
+        offsetY: true,
+      }
+    },
+    created: function() {
+      if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
     }
-  },
-  created: function() {
-    if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
   }
-}
 </script>
 
 <style scoped>

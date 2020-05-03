@@ -1,22 +1,13 @@
 import axios from 'axios';
 
 export default {
-  fetch_top_stories: ({ commit }) => {
+  fetch_top_posts: ({ commit }) => {
     axios
-      .get('https://hacker-news.firebaseio.com/v0/topstories.json')
+      .get('http://localhost:8080/api/v1/post/top')
       .then(resp => {
-        let results = resp.data.slice(0, 25);
-        results.forEach(element => {
-          axios
-            .get(
-              'https://hacker-news.firebaseio.com/v0/item/' + element + '.json'
-            )
-            .then(result => {
-              commit('APPEND_TOP_STORY', result);
-            })
-            .catch(err => {
-              console.log(err);
-            });
+        console.log(resp);
+        resp.data.forEach(post => {
+          commit('APPEND_TOP_POST', post);
         });
       })
       .catch(err => {
@@ -27,7 +18,6 @@ export default {
     axios
       .get('http://localhost:8080/api/v1/subreddit')
       .then(resp => {
-        console.log(resp);
         resp.data.forEach(subreddit => {
           commit('APPEND_SUBREDDIT', subreddit);
         })
@@ -38,10 +28,11 @@ export default {
   },
   fetch_posts_for_subreddit: ({ commit }, subredditId) => {
     axios
-      .get(`http://localhost:8080/api/v1/${subredditId}`)
+      .get(`http://localhost:8080/api/v1/post/subreddit/${subredditId.subredditId}`)
       .then(resp => {
-        console.log(resp)
-        commit('APPEND_SUBREDDIT_POST', resp);
+        resp.data.forEach(post => {
+          commit('APPEND_SUBREDDIT_POST', post);
+        })
       })
   }
 };

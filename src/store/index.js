@@ -8,9 +8,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     articles: [],
-    topStories: [],
+    topPosts: [],
     subreddits: [],
-    posts: []
+    jobPosts: []
   },
   mutations,
   actions,

@@ -1,25 +1,25 @@
 <template>
   <div class="home">
-    <item v-for="story in stories" :key="story.data.id" :story="story"></item>
+    <apost v-for="post in posts" :key="post._id" :post="post"></apost>
   </div>
 </template>
 
 <script>
-  import Item from '@/views/Item.vue';
+  import APost from '@/components/cards/APost.vue';
 
   export default {
-    name: "home",
+    name: "TheHomePage",
     components: {
-      'item': Item,
+      'apost': APost,
     },
     data: function() {
       return {
         err: "",
-        stories: this.$store.state.topStories,
+        posts: this.$store.state.topPosts,
       };
     },
     created: function() {
-      if (this.$store.state.topStories.length === 0) this.$store.dispatch('fetch_top_stories');
+      if (this.$store.state.topPosts.length === 0) this.$store.dispatch('fetch_top_posts');
     }
   }
 </script>
