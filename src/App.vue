@@ -41,7 +41,7 @@
   }
   @media (min-width: 1200px) {
     .container {
-      width: 750px;
+      width: 800px;
     }
   }
 </style>

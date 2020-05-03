@@ -50,16 +50,51 @@
           </v-row>
         </v-col>
       </v-row>
-       <div v-for="comment in comments" :key="comment._id">
-      <div class="comment-wrap">
-        <div class="comment-block">
-          <p class="comment-text">{{ comment.body }}</p>
-          <div class="bottom-comment">
-            <div class="comment-author">{{ comment.author }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <v-row v-for="comment in comments" :key="comment._id">
+        <v-row justify="space-between comment-row">
+          <v-col cols="12" md="1" class="text-center pl-0 fill-height">
+            <v-row
+              class="flex-column ma-0"
+              no-gutters
+            >
+              <v-col class="px-0">
+                <v-btn icon>
+                  <v-icon>mdi-account</v-icon>
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+          <v-col
+            cols="12"
+            md="11"
+          >
+            <v-row
+              class="flex-column ma-1 fill-height"
+            >
+              <v-card-text class="text--primary comment-writer">
+                {{ comment.author }}
+              </v-card-text>
+              <v-card-text class="text--primary">
+                {{ comment.body }}
+              </v-card-text>
+
+              <v-card-actions>
+                <v-row
+                  class="actions-row"
+                  align="center"
+                >
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-down-bold</v-icon></span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>Reply</span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
+                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
+                </v-row>
+              </v-card-actions>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-row>
     </v-container>
   </v-card>   
 </template>
@@ -95,73 +130,12 @@
 
 <style scoped>
   .container {
-    margin-top: 100px;
+    margin-top: 60px;
   }
-  .comment-wrap {
-    margin-bottom: 1.25rem;
-    display: table;
-    width: 100%;
-    min-height: 5.3125rem;
+  .comment-writer {
+    padding: 0;
   }
-
-  .photo {
-    padding-top: 0.625rem;
-    display: table-cell;
-    width: 3.5rem;
-  }
-
-  .photo .avatar {
-    height: 2.25rem;
-    width: 2.25rem;
-    border-radius: 50%;
-    background-size: contain;
-  }
-
-  .comment-block {
-    padding: 1rem;
-    background-color: #fff;
-    display: table-cell;
-    vertical-align: top;
-    border-radius: 0.1875rem;
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-            box-shadow: 0 1px 3px 0 rgba(0,0,0,0.08);
-  }
-
-  .comment-block textarea {
-    width: 100%;
-    resize: none;
-  }
-
-  .comment-text {
-    margin-bottom: 1.25rem;
-  }
-
-  .bottom-comment {
-    color: #acb4c2;
-    font-size: 0.875rem;
-  }
-
-  .comment-date {
-    float: left;
-  }
-
-  .comment-actions li {
-    display: inline;
-    margin: -2px;
-    cursor: pointer;
-  }
-
-  .comment-actions li.complain {
-    padding-right: 0.75rem;
-    border-right: 1px solid #e1e5eb;
-  }
-
-  .comment-actions li.reply {
-    padding-left: 0.75rem;
-    padding-right: 0.125rem;
-  }
-
-  .comment-actions li:hover {
-    color: #0095ff;
+  .comment-row {
+    margin-left: 20px;
   }
 </style>

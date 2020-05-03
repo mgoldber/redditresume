@@ -80,9 +80,6 @@
 </script>
 
 <style scoped>
-  .actions-row {
-    margin-left: 10px;
-  }
   .post-card {
     margin-bottom: 20px;
   }
@@ -94,6 +91,7 @@
   }
   .content-card {
     padding-top: 0;
+    padding-left: 0;
   }
   .upvote-bar {
     background-color: '#ffffff';
@@ -101,5 +99,6 @@
   .heading {
     margin-top: 10px;
     font-size: 18px;
+    padding-left: 0;
   }
 </style>

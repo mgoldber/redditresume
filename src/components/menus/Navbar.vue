@@ -27,7 +27,7 @@
           class="subredditBtn"
         >
           <v-icon left>mdi-ufo-outline</v-icon>
-          Home
+          {{ currentSubreddit }}
           <v-icon right>mdi-menu-down</v-icon>
         </v-btn>
       </template>
@@ -35,7 +35,9 @@
         <v-list-item
           v-for="(item, index) in subreddits"
           :key="index"
+          @click="setSubreddit(item.name)"
           :to="item.name.slice(2)"
+          replace
         >
           <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item>
@@ -95,6 +97,7 @@
           { title: 'Reddit Coins' },
         ],
         subreddits: this.$store.state.subreddits,
+        currentSubreddit: this.$route.path,
         disabled: false,
         absolute: false,
         openOnHover: false,
@@ -108,7 +111,12 @@
     },
     created: function() {
       if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
-    }
+    },
+    methods: {
+      setSubreddit(title) {
+        this.currentSubreddit = title;
+      }
+    },
   }
 </script>
 
