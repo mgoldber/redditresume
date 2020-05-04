@@ -12,7 +12,8 @@ export default new Vuex.Store({
     subreddits: [],
     posts: {
       jobPosts: [],
-      projectPosts: []
+      projectPosts: [],
+      podcastPosts: [],
     },
   },
   mutations,

@@ -51,7 +51,7 @@
                 class="white--text"
                 height="300px"
                 contain
-                :src="post.img"
+                :src="require(`@/assets/${post.img}`)"
               >
               </v-img>
               <div v-else class="d-flex flex-no-wrap justify-space-between">
@@ -65,7 +65,7 @@
                   tile
                 >
                   <v-img 
-                    :src="post.img">
+                    :src="require(`@/assets/${post.img}`)">
                   </v-img>
                 </v-avatar>
               </div>

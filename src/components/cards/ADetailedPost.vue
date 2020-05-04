@@ -1,9 +1,9 @@
 <template>
   <v-card
-    class="mx-auto"
+    class="mx-auto post-wrapper"
     flat
     outlined
-    max-width="950"
+    max-width="750"
   >
     <v-container fluid>
       <v-row justify="space-between">
@@ -54,20 +54,25 @@
                 size="130"
                 tile
               >
-                <v-img :src="post.img"></v-img>
+                <v-img :src="require(`@/assets/${post.img}`)"></v-img>
               </v-avatar>
             </div>
 
             <v-card-text class="text--primary">
               <div>{{ post.body }}</div>
+              <div 
+                id="buzzsprout-player-2621371"
+                v-if="podcasts"
+              >
+              </div>
             </v-card-text>
 
             <v-img
-              v-if="show"
+              v-if="show && !podcasts"
               class="white--text"
               height="300px"
               contain
-              :src="post.img"
+              :src="require(`@/assets/${post.img}`)"
             >
             </v-img>
           </v-row>
@@ -130,14 +135,21 @@
       return {
         post: {},
         show: false,
+        podcasts: false,
         comments: []
       }
+    },
+    mounted: function() {
+      let buzzsproutScript = document.createElement('script');
+      buzzsproutScript.setAttribute('src', 'https://www.buzzsprout.com/842749/2621371-open-office-spaces.js?container_id=buzzsprout-player-2621371&player=small" type="text/javascript" charset="utf-8')
+      document.head.appendChild(buzzsproutScript);
     },
     created: function() {
       axios.get(`http://localhost:8080/api/v1/post/${this.$route.params.id}`)
         .then((res) => {
           this.post = res.data;
           if (this.post.subredditName !== 'r/jobs') this.show = true;
+          if (this.post.subredditName === 'r/podcasts') this.podcasts = true;
           axios.get(`http://localhost:8080/api/v1/comment/${this.$route.params.id}`)
             .then((res) => {
               this.comments = res.data;
@@ -156,6 +168,9 @@
 <style scoped>
   .container {
     margin-top: 60px;
+  }
+  .post-wrapper {
+    width: 100%;
   }
   .title-header {
     font-size: 20px;

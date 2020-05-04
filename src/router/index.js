@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import TheHomePage from '@/components/pages/TheHomePage.vue'
 import TheJobsPage from '@/components/pages/TheJobsPage.vue'
 import TheProjectsPage from '@/components/pages/TheProjectsPage.vue'
+import ThePodcastPage from '@/components/pages/ThePodcastPage.vue'
 import ADetailedPost from '@/components/cards/ADetailedPost.vue'
 
 Vue.use(VueRouter)
@@ -10,6 +11,11 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
+    name: 'home',
+    component: TheHomePage
+  },
+  {
+    path: '/home',
     name: 'home',
     component: TheHomePage
   },
@@ -22,6 +28,11 @@ Vue.use(VueRouter)
     path: '/projects',
     name: 'projects',
     component: TheProjectsPage
+  },
+  {
+    path: '/podcasts',
+    name: 'podcasts',
+    component: ThePodcastPage
   },
   {
     path: "/post/:id/",

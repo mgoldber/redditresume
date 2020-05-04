@@ -114,8 +114,7 @@
       if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
     },
     watch: {
-      $route(to, from) {
-        console.log(from);
+      $route(to) {
         if (to.name === "ADetailedPost") {
           this.setSubreddit('r/jobs');
         } else {
