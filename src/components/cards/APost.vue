@@ -41,9 +41,19 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> {{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-              <div class="d-flex flex-no-wrap justify-space-between">
+              <v-card-text v-if="show" class="text--primary heading">
+                <div>{{ post.title }}</div>
+              </v-card-text>
+              <v-img 
+                v-if="show"
+                class="white--text"
+                height="400px"
+                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+              >
+              </v-img>
+              <div v-else class="d-flex flex-no-wrap justify-space-between">
                 <v-card-text class="text--primary heading">
                   <div>{{ post.title }}</div> 
                 </v-card-text>
@@ -78,7 +88,17 @@
 <script>
   export default {
     name: 'APost',
-    props: ["post"]
+    props: ["post", "subreddit"],
+    data: function() {
+      return {
+        err: "",
+        show: false
+      }
+    },
+    created: function() {
+      // Change the format of the post based on the subreddit that the post is made in
+      if (this.post.subredditName !== 'r/jobs') this.show = true;
+    }
   };
 </script>
 

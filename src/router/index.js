@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import TheHomePage from '@/components/pages/TheHomePage.vue'
 import TheJobsPage from '@/components/pages/TheJobsPage.vue'
+import TheProjectsPage from '@/components/pages/TheProjectsPage.vue'
 import ADetailedPost from '@/components/cards/ADetailedPost.vue'
 
 Vue.use(VueRouter)
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/jobs',
     name: 'jobs',
     component: TheJobsPage
+  },
+  {
+    path: '/projects',
+    name: 'projects',
+    component: TheProjectsPage
   },
   {
     path: "/post/:id/",

@@ -10,7 +10,10 @@ export default new Vuex.Store({
     articles: [],
     topPosts: [],
     subreddits: [],
-    jobPosts: []
+    posts: {
+      jobPosts: [],
+      projectPosts: []
+    },
   },
   mutations,
   actions,
