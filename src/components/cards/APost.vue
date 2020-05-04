@@ -49,8 +49,9 @@
               <v-img 
                 v-if="show"
                 class="white--text"
-                height="400px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                height="300px"
+                contain
+                :src="post.img"
               >
               </v-img>
               <div v-else class="d-flex flex-no-wrap justify-space-between">
@@ -63,7 +64,9 @@
                   size="130"
                   tile
                 >
-                  <v-img src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"></v-img>
+                  <v-img 
+                    :src="post.img">
+                  </v-img>
                 </v-avatar>
               </div>
 

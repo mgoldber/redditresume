@@ -38,9 +38,13 @@
           <v-row
             class="flex-column ma-1 fill-height"
           >
-            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> {{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-            <div class="d-flex flex-no-wrap justify-space-between">
+            <v-card-text v-if="show" class="text--primary heading">
+              <div>{{ post.title }}</div>
+            </v-card-text>
+
+            <div v-else class="d-flex flex-no-wrap justify-space-between">
               <v-card-text class="title-header text--primary">
                 <div>{{ post.title }}</div>
               </v-card-text>
@@ -50,13 +54,22 @@
                 size="130"
                 tile
               >
-                <v-img src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"></v-img>
+                <v-img :src="post.img"></v-img>
               </v-avatar>
             </div>
 
             <v-card-text class="text--primary">
               <div>{{ post.body }}</div>
             </v-card-text>
+
+            <v-img
+              v-if="show"
+              class="white--text"
+              height="300px"
+              contain
+              :src="post.img"
+            >
+            </v-img>
           </v-row>
         </v-col>
       </v-row>
@@ -116,6 +129,7 @@
     data: function() {
       return {
         post: {},
+        show: false,
         comments: []
       }
     },
@@ -123,6 +137,7 @@
       axios.get(`http://localhost:8080/api/v1/post/${this.$route.params.id}`)
         .then((res) => {
           this.post = res.data;
+          if (this.post.subredditName !== 'r/jobs') this.show = true;
           axios.get(`http://localhost:8080/api/v1/comment/${this.$route.params.id}`)
             .then((res) => {
               this.comments = res.data;
