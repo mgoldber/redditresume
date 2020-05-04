@@ -4,6 +4,7 @@ import TheHomePage from '@/components/pages/TheHomePage.vue'
 import TheJobsPage from '@/components/pages/TheJobsPage.vue'
 import TheProjectsPage from '@/components/pages/TheProjectsPage.vue'
 import ThePodcastPage from '@/components/pages/ThePodcastPage.vue'
+import TheAMAPage from '@/components/pages/TheAMAPage.vue'
 import ADetailedPost from '@/components/cards/ADetailedPost.vue'
 
 Vue.use(VueRouter)
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/podcasts',
     name: 'podcasts',
     component: ThePodcastPage
+  },
+  {
+    path: '/AMA',
+    name: "ama",
+    component: TheAMAPage
   },
   {
     path: "/post/:id/",

@@ -14,6 +14,7 @@ export default new Vuex.Store({
       jobPosts: [],
       projectPosts: [],
       podcastPosts: [],
+      amaPosts: [],
     },
   },
   mutations,
