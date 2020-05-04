@@ -38,11 +38,21 @@
           <v-row
             class="flex-column ma-1 fill-height"
           >
-            <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-            <v-card-text class="display-1 text--primary">
-              <div>{{ post.title }}</div>
-            </v-card-text>
+            <div class="d-flex flex-no-wrap justify-space-between">
+              <v-card-text class="title-header text--primary">
+                <div>{{ post.title }}</div>
+              </v-card-text>
+
+              <v-avatar
+                class="ma-3"
+                size="130"
+                tile
+              >
+                <v-img src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"></v-img>
+              </v-avatar>
+            </div>
 
             <v-card-text class="text--primary">
               <div>{{ post.body }}</div>
@@ -74,7 +84,7 @@
               <v-card-text class="text--primary comment-writer">
                 {{ comment.author }}
               </v-card-text>
-              <v-card-text class="text--primary">
+              <v-card-text class="text--primary comment-body">
                 {{ comment.body }}
               </v-card-text>
 
@@ -132,10 +142,27 @@
   .container {
     margin-top: 60px;
   }
+  .title-header {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+  .info-row {
+    padding-top: 0px;
+  }
   .comment-writer {
     padding: 0;
   }
+  .comment-body {
+    padding-left: 0;
+  }
   .comment-row {
     margin-left: 20px;
+  }
+  .action-icon {
+    margin-right: 5px;
+  }
+  .interactive-item {
+    margin-right: 10px;
+    font-size: 12px;
   }
 </style>

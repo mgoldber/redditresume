@@ -43,16 +43,19 @@
             >
               <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/Jobs • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-              <v-card-text class="text--primary heading">
-                <div>{{ post.title }}</div>
-              </v-card-text>
+              <div class="d-flex flex-no-wrap justify-space-between">
+                <v-card-text class="text--primary heading">
+                  <div>{{ post.title }}</div> 
+                </v-card-text>
 
-              <v-img
-                class="white--text align-end"
-                height="400px"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-              >
-              </v-img>
+                <v-avatar
+                  class="ma-3"
+                  size="130"
+                  tile
+                >
+                  <v-img src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"></v-img>
+                </v-avatar>
+              </div>
 
               <v-card-actions>
                 <v-row
@@ -88,6 +91,13 @@
   }
   .action-icon {
     margin-right: 5px;
+  }
+  .share-icon {
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    height: 20px;
+    background-color: white;
   }
   .content-card {
     padding-top: 0;

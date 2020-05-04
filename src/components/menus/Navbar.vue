@@ -36,7 +36,7 @@
           v-for="(item, index) in subreddits"
           :key="index"
           @click="setSubreddit(item.name)"
-          :to="item.name.slice(2)"
+          :to="'/' + item.name.slice(2)"
           replace
         >
           <v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -89,6 +89,7 @@
   export default {
     name: "Navbar",
     data: function() {
+      console.log(this.$route)
       return {
         items: [
           { title: 'My Profile' },
@@ -97,7 +98,7 @@
           { title: 'Reddit Coins' },
         ],
         subreddits: this.$store.state.subreddits,
-        currentSubreddit: this.$route.path,
+        currentSubreddit: this.$route.name === "ADetailedPost" ? 'r/jobs' : this.$route.name,
         disabled: false,
         absolute: false,
         openOnHover: false,
@@ -111,6 +112,16 @@
     },
     created: function() {
       if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
+    },
+    watch: {
+      $route(to, from) {
+        console.log(from);
+        if (to.name === "ADetailedPost") {
+          this.setSubreddit('r/jobs');
+        } else {
+          this.setSubreddit(to.name)
+        }
+      }
     },
     methods: {
       setSubreddit(title) {
