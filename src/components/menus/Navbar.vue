@@ -44,12 +44,6 @@
       </v-list>
     </v-menu>
     <v-spacer />
-    <v-text-field
-      solo-inverted
-      flat
-      hide-details
-      label="Search"
-    />
 
     <v-spacer />
     <v-menu

@@ -6,7 +6,7 @@
     max-width="750"
   >
     <v-container fluid>
-      <v-row justify="space-between">
+      <v-row>
         <v-col cols="12" md="1" class="text-center pl-0 fill-height content-card upvote-bar">
           <v-row
             class="flex-column ma-0"
@@ -54,7 +54,7 @@
                 size="130"
                 tile
               >
-                <v-img :src="require(`@/assets/${post.img}`)"></v-img>
+                <v-img :src="getImageUrl(post.img)"></v-img>
               </v-avatar>
             </div>
 
@@ -72,14 +72,14 @@
               class="white--text"
               height="300px"
               contain
-              :src="require(`@/assets/${post.img}`)"
+              :src="getImageUrl(post.img)"
             >
             </v-img>
           </v-row>
         </v-col>
       </v-row>
       <v-row v-for="comment in comments" :key="comment._id">
-        <v-row justify="space-between comment-row">
+        <v-row>
           <v-col cols="12" md="1" class="text-center pl-0 fill-height">
             <v-row
               class="flex-column ma-0"
@@ -122,6 +122,9 @@
             </v-row>
           </v-col>
         </v-row>
+        <v-row v-for="subComment in comment.subcomments" :key="subComment._id" v-bind:subComment="subComment">
+          {{ getSubComment(subComment) }}
+        </v-row>
       </v-row>
     </v-container>
   </v-card>   
@@ -136,31 +139,55 @@
         post: {},
         show: false,
         podcasts: false,
-        comments: []
+        comments: [],
+        subcomments: []
       }
     },
     mounted: function() {
       let buzzsproutScript = document.createElement('script');
       buzzsproutScript.setAttribute('src', 'https://www.buzzsprout.com/842749/2621371-open-office-spaces.js?container_id=buzzsprout-player-2621371&player=small" type="text/javascript" charset="utf-8')
+      buzzsproutScript.async = true;
       document.head.appendChild(buzzsproutScript);
     },
     created: function() {
-      axios.get(`http://localhost:8080/api/v1/post/${this.$route.params.id}`)
-        .then((res) => {
-          this.post = res.data;
-          if (this.post.subredditName !== 'r/jobs') this.show = true;
-          if (this.post.subredditName === 'r/podcasts') this.podcasts = true;
-          axios.get(`http://localhost:8080/api/v1/comment/${this.$route.params.id}`)
-            .then((res) => {
-              this.comments = res.data;
-            })
-            .catch((err) => {
-              console.log(err);
-            })
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+      this.getPostDetails(this.$route.params.id);
+      this.getPostComments(this.$route.params.id);
+    },
+    methods: {
+      getImageUrl: (pic) => {
+        return require('@/assets/' + pic);
+      },
+      getPostDetails: function(postId) {
+        axios.get(`http://localhost:8080/api/v1/post/${postId}`)
+          .then((res) => {
+            this.post = res.data;
+            if (this.post.subredditName !== 'r/jobs') this.show = true;
+            if (this.post.subredditName === 'r/podcasts') this.podcasts = true;
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      },
+      getPostComments: function(postId) {
+        axios.get(`http://localhost:8080/api/v1/comment/${postId}`)
+          .then((res) => {
+            this.comments = res.data;
+            console.log(this.comments);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      },
+      getSubComment: function(subCommentId) {
+        axios.get(`http://localhost:8080/api/v1/subcomment/${subCommentId}`)
+          .then((res) => {
+            console.log(res);
+            return res;
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
     }
   };
 </script>
