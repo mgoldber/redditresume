@@ -78,6 +78,7 @@
           </v-row>
         </v-col>
       </v-row>
+      <acommentform />
       <v-row v-for="comment in comments" :key="comment._id">
         <acomment :comment="comment" :isSubComment="false" />
         <v-row v-for="subComment in getSubCommentArray(comment._id)" :key="subComment._id" v-bind:subComment="subComment">
@@ -90,12 +91,14 @@
 
 <script>
   import axios from 'axios';
+  import ACommentForm from '@/components/forms/ACommentForm.vue'
   import AComment from '@/components/cards/AComment.vue'
 
   export default {
     name: "ADetailedPost",
     components: {
-      'acomment': AComment
+      'acomment': AComment,
+      'acommentform': ACommentForm,
     },
     data: function() {
       return {
