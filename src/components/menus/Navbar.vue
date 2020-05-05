@@ -4,10 +4,8 @@
     color="primary"
     dark
   >
-    <div class=icon-container>
-      <span class="icon"><v-icon>mdi-reddit</v-icon></span>
-      <span>MEDDIT</span>
-    </div>
+    <span class="icon"><v-icon>mdi-reddit</v-icon></span>
+    <v-toolbar-title :style="{cursor: 'pointer'}" @click="$router.push('/')">MEDDIT</v-toolbar-title>
     <v-menu
       v-model="communities"
       :disabled="disabled"
@@ -91,7 +89,7 @@
           { title: 'Reddit Coins' },
         ],
         subreddits: this.$store.state.subreddits,
-        currentSubreddit: this.$route.name === "ADetailedPost" ? 'r/jobs' : this.$route.name,
+        currentSubreddit: this.$route.name === 'home' ? 'r/home' : 'r/' + this.$route.params.subredditName,
         disabled: false,
         absolute: false,
         openOnHover: false,
@@ -109,7 +107,7 @@
     watch: {
       $route(to) {
         if (to.name === "ADetailedPost") {
-          this.setSubreddit('r/jobs');
+          this.setSubreddit(to.params.subredditName);
         } else {
           this.setSubreddit(to.name)
         }

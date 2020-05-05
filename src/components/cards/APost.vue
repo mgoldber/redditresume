@@ -6,7 +6,7 @@
       max-width="750"
       link
       hover
-      :to="{ path: '/post/' + post._id }"
+      :to="{ path: '/post/' + post.subredditName + '/' + post._id }"
     >
       <v-container fluid>
         <v-row justify="space-between">
@@ -41,7 +41,7 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> {{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
               <v-card-text v-if="show" class="text--primary heading">
                 <div>{{ post.title }}</div>
@@ -100,7 +100,7 @@
     },
     created: function() {
       // Change the format of the post based on the subreddit that the post is made in
-      if (this.post.subredditName !== 'r/jobs') this.show = true;
+      if (this.post.subredditName !== 'jobs') this.show = true;
     }
   };
 </script>

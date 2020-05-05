@@ -41,7 +41,7 @@ Vue.use(VueRouter)
     component: TheAMAPage
   },
   {
-    path: "/post/:id/",
+    path: "/post/:subredditName/:id/",
     name: "ADetailedPost",
     component: ADetailedPost
   }

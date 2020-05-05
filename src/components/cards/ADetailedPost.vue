@@ -38,7 +38,7 @@
           <v-row
             class="flex-column ma-1 fill-height"
           >
-            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> {{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
             <v-card-text v-if="show" class="text--primary heading">
               <div>{{ post.title }}</div>
@@ -126,8 +126,8 @@
         axios.get(`http://localhost:8080/api/v1/post/${postId}`)
           .then((res) => {
             this.post = res.data;
-            if (this.post.subredditName !== 'r/jobs') this.show = true;
-            if (this.post.subredditName === 'r/podcasts') this.podcasts = true;
+            if (this.post.subredditName !== 'jobs') this.show = true;
+            if (this.post.subredditName === 'podcasts') this.podcasts = true;
           })
           .catch((err) => {
             console.log(err);

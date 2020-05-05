@@ -5,7 +5,6 @@ export default {
     axios
       .get('http://localhost:8080/api/v1/post/top')
       .then(resp => {
-        console.log(resp);
         resp.data.forEach(post => {
           commit('APPEND_TOP_POST', post);
         });
