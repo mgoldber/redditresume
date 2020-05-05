@@ -1,0 +1,5 @@
+const OPEN_OFFICE_SPACES = "2621371"
+
+export default {
+  OPEN_OFFICE_SPACES: OPEN_OFFICE_SPACES
+}

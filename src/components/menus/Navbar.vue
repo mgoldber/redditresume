@@ -89,7 +89,7 @@
           { title: 'Reddit Coins' },
         ],
         subreddits: this.$store.state.subreddits,
-        currentSubreddit: this.$route.name === 'home' ? 'r/home' : 'r/' + this.$route.params.subredditName,
+        currentSubreddit: this.$route.name === 'ADetailedPost' ? this.$route.params.subredditName : 'r/' + this.$route.name,
         disabled: false,
         absolute: false,
         openOnHover: false,
@@ -102,6 +102,7 @@
       }
     },
     created: function() {
+      console.log(this.$route);
       if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
     },
     watch: {

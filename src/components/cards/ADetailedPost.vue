@@ -61,7 +61,7 @@
             <v-card-text class="text--primary">
               <div>{{ post.body }}</div>
               <div 
-                id="buzzsprout-player-2621371"
+                id="buzzsprout-large-player-842749"
                 v-if="podcasts"
               >
               </div>
@@ -107,10 +107,7 @@
       }
     },
     mounted: function() {
-      let buzzsproutScript = document.createElement('script');
-      buzzsproutScript.setAttribute('src', 'https://www.buzzsprout.com/842749/2621371-open-office-spaces.js?container_id=buzzsprout-player-2621371&player=small" type="text/javascript" charset="utf-8')
-      buzzsproutScript.async = true;
-      document.head.appendChild(buzzsproutScript);
+      this.injectScript('https://www.buzzsprout.com/842749.js?container_id=buzzsprout-large-player-842749&player=large');
     },
     created: function() {
       this.getPostDetails(this.$route.params.id);
@@ -119,6 +116,12 @@
       this.getSubComments();
     },
     methods: {
+      injectScript: (scriptName) => {
+        let newScript = document.createElement('script');
+        newScript.setAttribute('src', scriptName)
+        newScript.async = true;
+        document.head.appendChild(newScript);
+      },
       getImageUrl: (pic) => {
         return require('@/assets/' + pic);
       },
@@ -127,7 +130,7 @@
           .then((res) => {
             this.post = res.data;
             if (this.post.subredditName !== 'jobs') this.show = true;
-            if (this.post.subredditName === 'podcasts') this.podcasts = true;
+            if (this.post.title === 'Teching Out Podcast') this.podcasts = true;
           })
           .catch((err) => {
             console.log(err);
@@ -146,7 +149,6 @@
         axios.get(`http://localhost:8080/api/v1/subcomment`)
           .then((res) => {
             this.subcomments = res.data;
-            console.log(this.subcomments);
             return res;
           })
           .catch((err) => {
