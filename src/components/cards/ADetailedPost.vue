@@ -79,51 +79,9 @@
         </v-col>
       </v-row>
       <v-row v-for="comment in comments" :key="comment._id">
-        <v-row>
-          <v-col cols="12" md="1" class="text-center pl-0 fill-height">
-            <v-row
-              class="flex-column ma-0"
-              no-gutters
-            >
-              <v-col class="px-0">
-                <v-btn icon>
-                  <v-icon>mdi-account</v-icon>
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-col>
-          <v-col
-            cols="12"
-            md="11"
-          >
-            <v-row
-              class="flex-column ma-1 fill-height"
-            >
-              <v-card-text class="text--primary comment-writer">
-                {{ comment.author }}
-              </v-card-text>
-              <v-card-text class="text--primary comment-body">
-                {{ comment.body }}
-              </v-card-text>
-
-              <v-card-actions>
-                <v-row
-                  class="actions-row"
-                  align="center"
-                >
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-down-bold</v-icon></span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>Reply</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
-                </v-row>
-              </v-card-actions>
-            </v-row>
-          </v-col>
-        </v-row>
-        <v-row v-for="subComment in comment.subcomments" :key="subComment._id" v-bind:subComment="subComment">
-          {{ getSubComment(subComment) }}
+        <acomment :comment="comment" :isSubComment="false" />
+        <v-row v-for="subComment in getSubCommentArray(comment._id)" :key="subComment._id" v-bind:subComment="subComment">
+          <acomment :comment="subComment" :isSubComment="true" />
         </v-row>
       </v-row>
     </v-container>
@@ -132,8 +90,13 @@
 
 <script>
   import axios from 'axios';
+  import AComment from '@/components/cards/AComment.vue'
+
   export default {
     name: "ADetailedPost",
+    components: {
+      'acomment': AComment
+    },
     data: function() {
       return {
         post: {},
@@ -152,6 +115,8 @@
     created: function() {
       this.getPostDetails(this.$route.params.id);
       this.getPostComments(this.$route.params.id);
+      // Fetch all of the available sub-comments, probably horrendously slow
+      this.getSubComments();
     },
     methods: {
       getImageUrl: (pic) => {
@@ -172,21 +137,24 @@
         axios.get(`http://localhost:8080/api/v1/comment/${postId}`)
           .then((res) => {
             this.comments = res.data;
-            console.log(this.comments);
           })
           .catch((err) => {
             console.log(err);
           })
       },
-      getSubComment: function(subCommentId) {
-        axios.get(`http://localhost:8080/api/v1/subcomment/${subCommentId}`)
+      getSubComments: function() {
+        axios.get(`http://localhost:8080/api/v1/subcomment`)
           .then((res) => {
-            console.log(res);
+            this.subcomments = res.data;
+            console.log(this.subcomments);
             return res;
           })
           .catch((err) => {
             console.log(err);
           })
+      },
+      getSubCommentArray: function(commentId) {
+        return this.subcomments.filter((subcomment) => subcomment.commentId === commentId);
       }
     }
   };
@@ -205,21 +173,5 @@
   }
   .info-row {
     padding-top: 0px;
-  }
-  .comment-writer {
-    padding: 0;
-  }
-  .comment-body {
-    padding-left: 0;
-  }
-  .comment-row {
-    margin-left: 20px;
-  }
-  .action-icon {
-    margin-right: 5px;
-  }
-  .interactive-item {
-    margin-right: 10px;
-    font-size: 12px;
   }
 </style>

@@ -83,7 +83,6 @@
   export default {
     name: "Navbar",
     data: function() {
-      console.log(this.$route)
       return {
         items: [
           { title: 'My Profile' },
