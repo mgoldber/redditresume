@@ -59,7 +59,7 @@
                 class="white--text"
                 height="300px"
                 contain
-                :src="require(`@/assets/${post.img}`)"
+                :src="getImageUrl.icon"
               >
               </v-img>
               <div v-else class="d-flex flex-no-wrap justify-space-between">
@@ -73,7 +73,7 @@
                   tile
                 >
                   <v-img 
-                    :src="require(`@/assets/${post.img}`)">
+                    :src="getImageUrl.icon">
                   </v-img>
                 </v-avatar>
               </div>
@@ -107,6 +107,14 @@
       return {
         err: "",
         show: false
+      }
+    },
+    computed: {
+      getImageUrl() {
+        return {
+          ...this.post,
+          icon: require('@/assets/' + this.post.img)
+        }
       }
     },
     created: function() {

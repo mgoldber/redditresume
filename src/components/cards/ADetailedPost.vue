@@ -106,7 +106,9 @@
     },
     data: function() {
       return {
-        post: {},
+        post: {
+          img: 'placeholder.png'
+        },
         show: false,
         podcasts: false,
         showCommentForm: false,
