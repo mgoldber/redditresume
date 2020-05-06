@@ -13,14 +13,6 @@
     components: {
       Navbar,
     },
-    mounted: function() {
-      this.test()
-    },
-    methods: {
-      test() {
-        console.log("WTF");
-      }
-    },
     data: () => ({
       //
     }),
