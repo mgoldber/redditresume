@@ -7,7 +7,11 @@
   >
     <v-container fluid>
       <v-row>
-        <v-col cols="12" md="1" class="text-center pl-0 fill-height content-card upvote-bar">
+        <v-col 
+          cols="12" 
+          md="1" 
+          class="text-center pl-0 fill-height content-card upvote-bar d-none d-md-block"
+        >
           <v-row
             class="flex-column ma-0"
             no-gutters
@@ -54,7 +58,7 @@
                 size="130"
                 tile
               >
-                <v-img :src="getImageUrl(post.img)"></v-img>
+                <v-img :src="getImageUrl.icon"></v-img>
               </v-avatar>
             </div>
 
@@ -72,13 +76,13 @@
               class="white--text"
               height="300px"
               contain
-              :src="getImageUrl(post.img)"
+              :src="getImageUrl.icon"
             >
             </v-img>
           </v-row>
         </v-col>
       </v-row>
-      <acommentform />
+      <acommentform v-if="showCommentForm"/>
       <v-row v-for="comment in comments" :key="comment._id">
         <acomment :comment="comment" :isSubComment="false" />
         <v-row v-for="subComment in getSubCommentArray(comment._id)" :key="subComment._id" v-bind:subComment="subComment">
@@ -105,8 +109,17 @@
         post: {},
         show: false,
         podcasts: false,
+        showCommentForm: false,
         comments: [],
         subcomments: []
+      }
+    },
+    computed: {
+      getImageUrl() {
+        return {
+          ...this.post,
+          icon: require('@/assets/' + this.post.img)
+        }
       }
     },
     mounted: function() {
@@ -125,14 +138,12 @@
         newScript.async = true;
         document.head.appendChild(newScript);
       },
-      getImageUrl: (pic) => {
-        return require('@/assets/' + pic);
-      },
       getPostDetails: function(postId) {
         axios.get(`http://localhost:8080/api/v1/post/${postId}`)
           .then((res) => {
             this.post = res.data;
             if (this.post.subredditName !== 'jobs') this.show = true;
+            if (this.post.subredditName === 'jobs') this.showCommentForm = true;
             if (this.post.title === 'Teching Out Podcast') this.podcasts = true;
           })
           .catch((err) => {

@@ -33,5 +33,19 @@ export default {
           commit('APPEND_SUBREDDIT_POST', post);
         })
       })
+      .catch(err => {
+        console.log(err);
+      })
+  },
+  fetch_post_details: ({ commit }, postId) => {
+    axios
+      .get(`http://localhost:8080/api/v1/post/${postId.postId}`)
+      .then(resp => {
+        console.log(resp);
+        commit('APPEND_POST_DETAILS', resp.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 };

@@ -16,6 +16,7 @@ export default new Vuex.Store({
       podcastPosts: [],
       amaPosts: [],
     },
+    postDetails: {},
   },
   mutations,
   actions,

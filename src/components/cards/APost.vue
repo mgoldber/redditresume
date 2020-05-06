@@ -10,7 +10,13 @@
     >
       <v-container fluid>
         <v-row justify="space-between">
-          <v-col cols="12" md="1" class="text-center pl-0 fill-height content-card upvote-bar">
+          <v-col 
+            cols="12" 
+            md="1" 
+            sm="1" 
+            xs="1" 
+            class="pl-0 fill-height hidden-sm-and-down content-card upvote-bar"
+          >
             <v-row
               class="flex-column ma-0"
               no-gutters
@@ -36,6 +42,8 @@
           <v-col
             cols="12"
             md="11"
+            sm="11"
+            xs="11"
             class="content-card"
           >
             <v-row
@@ -75,6 +83,9 @@
                   class="actions-row"
                   align="center"
                 >
+                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>
+                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item">{{ post.votes }}</span>
+                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-down-bold</v-icon></span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ post.comments.length }} comments</span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
                   <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
