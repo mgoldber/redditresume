@@ -10,11 +10,17 @@
 
   export default {
     name: 'App',
-
     components: {
       Navbar,
     },
-
+    mounted: function() {
+      this.test()
+    },
+    methods: {
+      test() {
+        console.log("WTF");
+      }
+    },
     data: () => ({
       //
     }),

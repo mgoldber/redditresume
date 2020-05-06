@@ -12,6 +12,9 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'home',
+    meta: {
+      public: true
+    },
     component: TheHomePage
   },
   {

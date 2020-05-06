@@ -98,6 +98,8 @@
   import ACommentForm from '@/components/forms/ACommentForm.vue'
   import AComment from '@/components/cards/AComment.vue'
 
+  const url = process.env.VUE_APP_API_URL
+
   export default {
     name: "ADetailedPost",
     components: {
@@ -141,7 +143,7 @@
         document.head.appendChild(newScript);
       },
       getPostDetails: function(postId) {
-        axios.get(`http://localhost:8080/api/v1/post/${postId}`)
+        axios.get(`${url}api/v1/post/${postId}`)
           .then((res) => {
             this.post = res.data;
             if (this.post.subredditName !== 'jobs') this.show = true;
@@ -153,7 +155,7 @@
           })
       },
       getPostComments: function(postId) {
-        axios.get(`http://localhost:8080/api/v1/comment/${postId}`)
+        axios.get(`${url}api/v1/comment/${postId}`)
           .then((res) => {
             this.comments = res.data;
           })
@@ -162,7 +164,7 @@
           })
       },
       getSubComments: function() {
-        axios.get(`http://localhost:8080/api/v1/subcomment`)
+        axios.get(`${url}api/v1/subcomment`)
           .then((res) => {
             this.subcomments = res.data;
             return res;
