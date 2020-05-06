@@ -34,7 +34,7 @@
           v-for="(item, index) in subreddits"
           :key="index"
           @click="setSubreddit(item.name)"
-          :to="'/' + item.name.slice(2)"
+          :to="'/' + item.name.slice(2) + '/' + item._id"
           replace
         >
           <v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -89,7 +89,7 @@
           { title: 'Reddit Coins' },
         ],
         subreddits: this.$store.state.subreddits,
-        currentSubreddit: this.$route.name === 'ADetailedPost' ? this.$route.params.subredditName : 'r/' + this.$route.name,
+        currentSubreddit: this.getSubreddit(),
         disabled: false,
         absolute: false,
         openOnHover: false,
@@ -102,14 +102,17 @@
       }
     },
     created: function() {
-      console.log(this.$route);
       if (this.$store.state.subreddits.length === 0) this.$store.dispatch('fetch_all_subreddits');
     },
     watch: {
       $route(to) {
         if (to.name === "ADetailedPost") {
           this.setSubreddit(to.params.subredditName);
-        } else {
+        } 
+        else if (to.name === "homeSub") {
+          this.setSubreddit('r/home')
+        }
+        else {
           this.setSubreddit(to.name)
         }
       }
@@ -117,6 +120,9 @@
     methods: {
       setSubreddit(title) {
         this.currentSubreddit = title;
+      },
+      getSubreddit() {
+        return this.$route.name === 'ADetailedPost' ? this.$route.params.subredditName :  this.$route.name === 'homeSub' ? 'r/home' : 'r/' + this.$route.name
       }
     },
   }

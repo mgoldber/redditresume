@@ -15,11 +15,11 @@
     data: function() {
       return {
         err: "",
-        projectPosts: this.$store.state.posts.projectPosts,
+        projectPosts: this.$store.state.projectPosts,
       };
     },
     created: function() {
-      if (this.$store.state.posts.projectPosts.length === 0) this.$store.dispatch('fetch_posts_for_subreddit', { subredditId: '5eace3b8ae597e015df7e1e4' })
+      if (this.$store.state.projectPosts.length === 0) this.$store.dispatch('fetch_posts_for_projects', { subredditId: this.$route.params.subredditId });
     }
   }
 </script>

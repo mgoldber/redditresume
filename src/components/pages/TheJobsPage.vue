@@ -15,12 +15,12 @@
     data: function() {
       return {
         err: "",
-        jobPosts: this.$store.state.posts.jobPosts,
+        jobPosts: this.$store.state.jobPosts,
       };
     },
     created: function() {
-      if (this.$store.state.posts.jobPosts.length === 0) this.$store.dispatch('fetch_posts_for_subreddit', { subredditId: '5eace3a8ae597e015df7e1e1' })
-    }
+      if (this.$store.state.jobPosts.length === 0) this.$store.dispatch('fetch_posts_for_jobs', { subredditId: this.$route.params.subredditId })
+    },
   }
 </script>
 

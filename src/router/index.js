@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import TheHomePage from '@/components/pages/TheHomePage.vue'
 import TheJobsPage from '@/components/pages/TheJobsPage.vue'
 import TheProjectsPage from '@/components/pages/TheProjectsPage.vue'
-import ThePodcastPage from '@/components/pages/ThePodcastPage.vue'
 import TheAMAPage from '@/components/pages/TheAMAPage.vue'
 import ADetailedPost from '@/components/cards/ADetailedPost.vue'
 
@@ -16,27 +15,22 @@ Vue.use(VueRouter)
     component: TheHomePage
   },
   {
-    path: '/home',
-    name: 'home',
+    path: '/home/:subredditId',
+    name: 'homeSub',
     component: TheHomePage
   },
   {
-    path: '/jobs',
+    path: '/jobs/:subredditId',
     name: 'jobs',
     component: TheJobsPage
   },
   {
-    path: '/projects',
+    path: '/projects/:subredditId',
     name: 'projects',
     component: TheProjectsPage
   },
   {
-    path: '/podcasts',
-    name: 'podcasts',
-    component: ThePodcastPage
-  },
-  {
-    path: '/AMA',
+    path: '/AMA/:subredditId',
     name: "ama",
     component: TheAMAPage
   },

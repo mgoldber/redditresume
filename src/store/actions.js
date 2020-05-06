@@ -25,23 +25,37 @@ export default {
         console.log(err);
       })
   },
-  fetch_posts_for_subreddit: ({ commit }, subredditId) => {
+  fetch_posts_for_jobs: ({ commit }, subredditId) => {
     axios
       .get(`http://localhost:8080/api/v1/post/subreddit/${subredditId.subredditId}`)
       .then(resp => {
         resp.data.forEach(post => {
-          commit('APPEND_SUBREDDIT_POST', post);
+          commit('APPEND_JOB_POST', post);
         })
       })
       .catch(err => {
         console.log(err);
       })
   },
-  fetch_post_details: ({ commit }, postId) => {
+  fetch_posts_for_projects: ({ commit }, subredditId) => {
     axios
-      .get(`http://localhost:8080/api/v1/post/${postId.postId}`)
+      .get(`http://localhost:8080/api/v1/post/subreddit/${subredditId.subredditId}`)
       .then(resp => {
-        commit('APPEND_POST_DETAILS', resp.data);
+        resp.data.forEach(post => {
+          commit('APPEND_PROJECTS_POST', post);
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  },
+  fetch_posts_for_ama: ({ commit }, subredditId) => {
+    axios
+      .get(`http://localhost:8080/api/v1/post/subreddit/${subredditId.subredditId}`)
+      .then(resp => {
+        resp.data.forEach(post => {
+          commit('APPEND_AMA_POST', post);
+        })
       })
       .catch(err => {
         console.log(err);
