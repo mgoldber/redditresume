@@ -14,5 +14,8 @@ export default {
   APPEND_POST_DETAILS: (state, details) => {
     console.log(details);
     Object.assign(state.postDetails, details);
+  },
+  APPEND_SUBMITTED_COMMENT: (state, comment) => {
+    state.comments.push(comment)
   }
 };

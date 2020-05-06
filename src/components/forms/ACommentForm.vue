@@ -53,6 +53,7 @@
         <v-row>
           <v-spacer />
           <v-btn 
+            color="primary"
             class="mr-4 submit-btn" @click="submit"
           >Comment
           </v-btn>
@@ -64,8 +65,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
     name: 'ACommentForm',
     data: function() {
@@ -80,7 +79,7 @@
         hint: '',
         label: '',
         loading: false,
-        comment: 'Mark is the best coworker I\'ve ever had.',
+        comment: 'Mark is the best coworker I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
         noResize: true,
         outlined: false,
         persistentHint: false,
@@ -95,10 +94,8 @@
     },
     methods: {
       submit() {
-        console.log(this.name);
-        console.log(this.comment);
-        console.log('btn submit')
-        axios.post('http://localhost:8080/api/v1/contact');
+        this.$store.dispatch('send_comment_form', { name: this.name, comment: this.comment });
+        // Should probably disable the form after the submission occurs?
       }
     }
   }

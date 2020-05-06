@@ -41,8 +41,20 @@ export default {
     axios
       .get(`http://localhost:8080/api/v1/post/${postId.postId}`)
       .then(resp => {
-        console.log(resp);
         commit('APPEND_POST_DETAILS', resp.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  },
+  send_comment_form: ({ commit }, comment) => {
+    axios
+      .post(`http://localhost:8080/api/v1/contact`, {
+        name: comment.name,
+        comment: comment.comment
+      })
+      .then(() => {
+        commit('APPEND_SUBMITTED_COMMENT', { name: comment.name, comment: comment.comment });
       })
       .catch(err => {
         console.log(err);
