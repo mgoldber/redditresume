@@ -1,5 +1,5 @@
 <template>
-  <v-row v-bind:class="{'comment-row': isSubComment}">
+  <v-row class='comment' v-bind:class="{'comment-row': isSubComment}">
     <v-col cols="12" md="1" sm="1" xs="1" class="text-center pl-0 fill-height d-none d-md-block">
       <v-row
         class="flex=column ma-0"
@@ -54,6 +54,9 @@
 </script>
 
 <style scoped>
+  .comment {
+    margin-left: 5px;
+  }
   .comment-writer {
     padding: 0;
   }

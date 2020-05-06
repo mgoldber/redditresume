@@ -20,7 +20,7 @@
           <v-text-field
             v-model="name"
             class="comment-name"
-            placeholder="MarkG"
+            placeholder="MarkG (pls use real name)"
             required
           >
           </v-text-field>
@@ -79,11 +79,11 @@
         hint: '',
         label: '',
         loading: false,
-        comment: 'Mark is the best coworker I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
+        comment: '',
         noResize: true,
         outlined: false,
         persistentHint: false,
-        placeholder: '',
+        placeholder: 'Mark is the best coworker I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
         rounded: false,
         rowHeight: 24,
         rows: 5,
