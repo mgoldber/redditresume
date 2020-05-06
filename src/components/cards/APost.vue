@@ -15,7 +15,7 @@
             md="1" 
             sm="1" 
             xs="1" 
-            class="pl-0 fill-height hidden-sm-and-down content-card upvote-bar"
+            class="fill-height hidden-sm-and-down content-card upvote-bar"
           >
             <v-row
               class="flex-column ma-0"
@@ -147,10 +147,14 @@
   }
   .upvote-bar {
     background-color: '#ffffff';
+    padding-left: 10px;
   }
   .heading {
     margin-top: 10px;
     font-size: 18px;
     padding-left: 0;
+  }
+  .title {
+    font-size: 24px;
   }
 </style>

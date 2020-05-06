@@ -44,26 +44,33 @@
           >
             <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-            <v-card-text v-if="show" class="text--primary heading">
-              <div>{{ post.title }}</div>
+            <v-card-text v-if="show" class="text--primary">
+              <p>{{ post.title }}</p>
             </v-card-text>
 
-            <div v-else class="d-flex flex-no-wrap justify-space-between">
-              <v-card-text class="title-header text--primary">
-                <div>{{ post.title }}</div>
-              </v-card-text>
+            <v-card-text v-if="show" class="text--primary">
+              <p>{{ post.body }}</p>
+            </v-card-text>
 
-              <v-avatar
-                class="ma-3"
-                size="130"
-                tile
-              >
-                <v-img :src="getImageUrl.icon"></v-img>
-              </v-avatar>
-            </div>
+            <v-card v-else flat class="mx-auto">
+
+              <v-list-item three-line>
+                <v-list-item-content>
+                  <v-list-item-title class="headline wrap-text-title mb-1">{{ post.title }}</v-list-item-title>
+                  <v-list-item-subtitle class="wrap-text">{{ post.body }}</v-list-item-subtitle>
+                </v-list-item-content>
+
+                <v-list-item-avatar
+                  class="ma-3"
+                  size="100"
+                  tile
+                >
+                  <v-img :src="getImageUrl.icon"></v-img>
+                </v-list-item-avatar>
+              </v-list-item>
+            </v-card>
 
             <v-card-text class="text--primary">
-              <div>{{ post.body }}</div>
               <div 
                 id="buzzsprout-large-player-842749"
                 v-if="podcasts"
@@ -193,5 +200,11 @@
   }
   .info-row {
     padding-top: 0px;
+  }
+  .wrap-text-title {
+    white-space: normal;
+  }
+  .wrap-text {
+    -webkit-line-clamp: unset !important;
   }
 </style>
