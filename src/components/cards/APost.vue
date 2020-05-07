@@ -78,21 +78,7 @@
                 </v-avatar>
               </div>
 
-              <v-card-actions>
-                <v-row
-                  class="actions-row"
-                  :class="{'pl-3': $vuetify.breakpoint.smAndDown}"
-                  align="center"
-                >
-                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>
-                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item">{{ post.votes }}</span>
-                  <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-down-bold</v-icon></span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ post.comments.length }} comments</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-seal</v-icon>Give award</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-share</v-icon>Share</span>
-                  <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
-                </v-row>
-              </v-card-actions>
+              <thepostactions :post="post" />
             </v-row>
           </v-col>
         </v-row>
@@ -101,8 +87,13 @@
 </template>
 
 <script>
+  import ThePostActions from '@/components/cards/ThePostActions.vue';
+
   export default {
     name: 'APost',
+    components: {
+      'thepostactions': ThePostActions
+    },
     props: ["post", "subreddit"],
     data: function() {
       return {
@@ -128,19 +119,6 @@
 <style scoped>
   .post-card {
     margin-bottom: 20px;
-  }
-  .interactive-item {
-    margin-right: 10px;
-  }
-  .action-icon {
-    margin-right: 5px;
-  }
-  .share-icon {
-    right: 0;
-    bottom: 0;
-    width: 20px;
-    height: 20px;
-    background-color: white;
   }
   .content-card {
     padding-top: 0;

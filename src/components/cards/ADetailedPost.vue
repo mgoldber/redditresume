@@ -86,6 +86,7 @@
               :src="getImageUrl.icon"
             >
             </v-img>
+            <thepostactions :post="post" />
           </v-row>
         </v-col>
       </v-row>
@@ -102,6 +103,7 @@
 
 <script>
   import axios from 'axios';
+  import ThePostActions from '@/components/cards/ThePostActions.vue'
   import ACommentForm from '@/components/forms/ACommentForm.vue'
   import AComment from '@/components/cards/AComment.vue'
 
@@ -110,6 +112,7 @@
   export default {
     name: "ADetailedPost",
     components: {
+      'thepostactions': ThePostActions,
       'acomment': AComment,
       'acommentform': ACommentForm,
     },
