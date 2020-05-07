@@ -69,7 +69,8 @@
       >
         <v-card>
           <v-spacer></v-spacer>
-          <v-card-text class="headline">Are you sure you want to show your undying support for your best friend Mark?</v-card-text>
+          <v-card-title class="headline">Support Mark?</v-card-title>
+          <v-card-text>Are you sure you want to show your undying support for your best friend Mark?</v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
 

@@ -66,12 +66,21 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item
-          v-for="(item, index) in items"
-          :key="index"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
+        <v-list-item-group v-model="item" color="primary">
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            :href="item.url"
+            :target="item.title === 'Email' ? '' : '_blank'"
+          >
+            <v-list-item-icon>
+              <v-icon v-text="item.icon"></v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title v-html="item.title"></v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
       </v-list>
     </v-menu>
   </v-app-bar>
@@ -82,11 +91,13 @@
     name: "Navbar",
     data: function() {
       return {
+        item: 1,
         items: [
-          { title: 'My Profile' },
-          { title: 'User Settings' },
-          { title: 'Night Mode' },
-          { title: 'Reddit Coins' },
+          { title: 'LinkedIn', icon: 'mdi-linkedin', url: 'https://www.linkedin.com/in/markdgoldberg/' },
+          { title: 'Twitter', icon: 'mdi-twitter', url: 'https://twitter.com/mgoldber' },
+          { title: 'GitHub', icon: 'mdi-github', url: 'https://github.com/mgoldber' },
+          { title: 'Email', icon: 'mdi-email', url: 'mailto:hello@goldbergmark.com' },
+          { title: 'Night Mode', icon: 'mdi-brightness-4' },
         ],
         subreddits: this.$store.state.subreddits,
         currentSubreddit: this.getSubreddit(),
