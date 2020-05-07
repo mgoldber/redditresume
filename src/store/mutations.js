@@ -5,11 +5,6 @@ export default {
   APPEND_SUBREDDIT: (state, subreddit) => {
     state.subreddits.push(subreddit);
   },
-  APPEND_SUBREDDIT_POST: (state, post) => {
-    if (post.subredditId === "5eace3b8ae597e015df7e1e4") state.posts.projectPosts.push(post);
-    if (post.subredditId === "5eace3adae597e015df7e1e2") state.posts.podcastPosts.push(post);
-    if (post.subredditId === "5eace3bdae597e015df7e1e5") state.posts.amaPosts.push(post);
-  },
   APPEND_JOB_POST: (state, post) => {
     state.jobPosts.push(post);
   },

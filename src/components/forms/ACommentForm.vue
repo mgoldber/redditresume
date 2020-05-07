@@ -21,6 +21,7 @@
             v-model="name"
             class="comment-name"
             placeholder="MarkG (pls use real name)"
+            :disabled="disabled"
             required
           >
           </v-text-field>
@@ -34,6 +35,7 @@
         :counter="counter ? counter : false"
         :filled="filled"
         :flat="flat"
+        :disabled="disabled"
         :hint="hint"
         :label="label"
         :loading="loading"
@@ -54,12 +56,40 @@
           <v-spacer />
           <v-btn 
             color="primary"
-            class="mr-4 submit-btn" @click="submit"
+            :disabled="disabled"
+            class="mr-4 submit-btn" 
+            @click.stop="dialog = true"
           >Comment
           </v-btn>
         </v-row>
       </v-card-actions>
-      
+      <v-dialog
+        v-model="dialog"
+        max-width="290"
+      >
+        <v-card>
+          <v-spacer></v-spacer>
+          <v-card-text class="headline">Are you sure you want to show your undying support for your best friend Mark?</v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn
+              color="green darken-1"
+              text
+              @click="dialog = false"
+            >
+              No, hate him
+            </v-btn>
+            <v-btn
+              color="green darken-1"
+              text
+              @click="submit"
+            >
+              Yes, love him
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-card>
   </v-form>
 </template>
@@ -73,9 +103,11 @@
         autoGrow: false,
         autofocus: true,
         clearable: false,
+        dialog: false,
         counter: 0,
         filled: false,
         flat: false,
+        disabled: this.isDisabled(),
         hint: '',
         label: '',
         loading: false,
@@ -92,10 +124,17 @@
         solo: false,
       }
     },
+    mounted: function() {
+      
+    },
     methods: {
       submit() {
         this.$store.dispatch('send_comment_form', { name: this.name, comment: this.comment });
-        // Should probably disable the form after the submission occurs?
+        this.dialog = false;
+      },
+      isDisabled() {
+        console.log(this.$store.state.comments);
+        return this.$store.state.comments.length > 0 ? true : false
       }
     }
   }
