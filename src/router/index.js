@@ -47,6 +47,9 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
+  scrollBehavior () { // This makes sure that new pages open at the top of the page as opposed to the bottom
+    return { x: 0, y: 0 }
+  },
   routes
 })
 

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const url = process.env.VUE_APP_API_URL
-console.log(url)
 export default {
   fetch_top_posts: ({ commit }) => {
     axios

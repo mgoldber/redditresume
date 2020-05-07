@@ -49,9 +49,9 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card" :class="{'pl-3': $vuetify.breakpoint.smAndDown}"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-              <v-card-text v-if="show" class="text--primary heading">
+              <v-card-text v-if="show" class="text--primary heading" :class="{'pl-3': $vuetify.breakpoint.smAndDown}">
                 <div>{{ post.title }}</div>
               </v-card-text>
               <v-img 
@@ -63,7 +63,7 @@
               >
               </v-img>
               <div v-else class="d-flex flex-no-wrap justify-space-between">
-                <v-card-text class="text--primary heading">
+                <v-card-text class="text--primary heading" :class="{'pl-3': $vuetify.breakpoint.smAndDown}">
                   <div>{{ post.title }}</div> 
                 </v-card-text>
 
@@ -81,6 +81,7 @@
               <v-card-actions>
                 <v-row
                   class="actions-row"
+                  :class="{'pl-3': $vuetify.breakpoint.smAndDown}"
                   align="center"
                 >
                   <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>

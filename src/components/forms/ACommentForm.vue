@@ -134,7 +134,6 @@
         this.dialog = false;
       },
       isDisabled() {
-        console.log(this.$store.state.comments);
         return this.$store.state.comments.length > 0 ? true : false
       }
     }
