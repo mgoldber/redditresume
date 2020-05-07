@@ -21,7 +21,7 @@
       <v-row
         class="flex-column ma-1 fill-height"
       >
-        <v-card-text class="text--primary comment-writer">
+        <v-card-text class="comment-writer">
           {{ comment.author }} <v-icon color="blue" v-bind:class="{'is-visible': !isSubComment}">mdi-pencil</v-icon>
         </v-card-text>
         <v-card-text class="text--primary comment-body">
@@ -59,6 +59,7 @@
   }
   .comment-writer {
     padding: 0;
+    color: rgba(0,0,0,0.6);
   }
   .is-visible {
     display: none;

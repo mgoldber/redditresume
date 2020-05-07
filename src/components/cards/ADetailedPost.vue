@@ -44,9 +44,9 @@
           >
             <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
-            <v-card-text v-if="show" class="text--primary">
+            <v-card-title v-if="show" class="heading text--primary">
               <p>{{ post.title }}</p>
-            </v-card-text>
+            </v-card-title>
 
             <v-card-text v-if="show" class="text--primary">
               <p>{{ post.body }}</p>

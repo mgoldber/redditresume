@@ -1,11 +1,10 @@
 <template>
   <v-app-bar
     app
-    color="primary"
-    dark
+    color="white"
   >
     <span class="icon"><v-icon>mdi-reddit</v-icon></span>
-    <v-toolbar-title :style="{cursor: 'pointer'}" @click="$router.push('/')">MEDDIT</v-toolbar-title>
+    <v-toolbar-title class="website-name" color="primary" @click="$router.push('/')">MARKIT</v-toolbar-title>
     <v-menu
       v-model="communities"
       :disabled="disabled"
@@ -18,8 +17,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="primary"
-          dark
+          color="transparent"
           v-on="on"
           depressed
           class="subredditBtn"
@@ -34,7 +32,7 @@
           v-for="(item, index) in subreddits"
           :key="index"
           @click="setSubreddit(item.name)"
-          :to="'/' + item.name.slice(2) + '/' + item._id"
+          :to="'/' + item.name + '/' + item._id"
           replace
         >
           <v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -56,8 +54,7 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="primary"
-          dark
+          color="transparent"
           v-on="on"
           depressed
         >
@@ -141,7 +138,10 @@
 
 <style scoped>
   .icon-container {
-    margin-right: 50px;
+    margin-right: 60px;
+  }
+  .website-name {
+    margin-right: 35px;
   }
   .icon {
     margin-right: 7px;
