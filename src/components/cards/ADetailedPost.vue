@@ -86,7 +86,7 @@
               :src="getImageUrl.icon"
             >
             </v-img>
-            <thepostactions :post="post" :isDetailed="true" />
+            <thepostactions :post="post" :isDetailed="true" :numOfComments="comments.length"  />
           </v-row>
         </v-col>
       </v-row>

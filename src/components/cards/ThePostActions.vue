@@ -7,7 +7,7 @@
       <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-up-bold</v-icon></span>
       <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item">{{ post.votes }}</span>
       <span v-show="$vuetify.breakpoint.smAndDown" class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-arrow-down-bold</v-icon></span>
-      <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ post.comments.length }} comments</span>
+      <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ numOfComments }} comments</span>
       <v-btn
         depressed
         color="transparent"
@@ -74,7 +74,7 @@
     components: {
       'adialogbox': ADialogBox
     },
-    props: ["post", "isDetailed"],
+    props: ["post", "isDetailed", "numOfComments"],
     data: function() {
       return {
         dialog: false
