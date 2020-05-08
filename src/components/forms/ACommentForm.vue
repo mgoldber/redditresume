@@ -116,6 +116,9 @@
       submit() {
         this.$store.dispatch('send_comment_form', { name: this.name, comment: this.comment });
         this.$refs.dialogComp.setValue(false);
+        // Clear out the form fields after submission
+        this.name = ''
+        this.comment = ''
       },
       isDisabled() {
         return this.$store.state.comments.length > 0 ? true : false
