@@ -44,7 +44,24 @@
           submit('https://twitter.com/mgoldber')
         }
       }" />
-      <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
+      <v-btn
+        depressed
+        color="transparent"
+        v-if="isDetailed"
+        @click.stop="save"
+      >
+        <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
+      </v-btn>
+      <span v-else class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-bookmark-plus</v-icon>Save</span>
+      <adialogbox ref="githubDialog" :dialogData="{
+        title: 'Saving for later?',
+        body: 'Sounds like version control. Connect on GitHub?',
+        rejectText: 'No way!',
+        confirmText: 'Connect on GitHub',
+        sendFunc: (url) => {
+          submit('https://github.com/mgoldber')
+        }
+      }" />
     </v-row>
     </v-card-actions>
 </template>
@@ -69,6 +86,9 @@
       },
       share() {
         this.$refs.twitterDialog.setValue(true);
+      },
+      save() {
+        this.$refs.githubDialog.setValue(true);
       },
       submit(url) {
         window.open(url, "_blank")

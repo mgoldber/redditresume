@@ -100,7 +100,7 @@
         noResize: true,
         outlined: false,
         persistentHint: false,
-        placeholder: 'Mark is the best coworker I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
+        placeholder: 'Mark is the best coworker / teacher I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
         rounded: false,
         rowHeight: 24,
         rows: 5,
