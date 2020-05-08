@@ -94,7 +94,6 @@
           { title: 'Twitter', icon: 'mdi-twitter', url: 'https://twitter.com/mgoldber' },
           { title: 'GitHub', icon: 'mdi-github', url: 'https://github.com/mgoldber' },
           { title: 'Email', icon: 'mdi-email', url: 'mailto:hello@goldbergmark.com' },
-          { title: 'Night Mode', icon: 'mdi-brightness-4' },
         ],
         subreddits: this.$store.state.subreddits,
         currentSubreddit: this.getSubreddit(),
