@@ -19,5 +19,5 @@ module.exports = {
   transpileDependencies: [
     "vuetify"
   ],
-  publicPath: '/redditresume'
+  publicPath: '/'
 }
