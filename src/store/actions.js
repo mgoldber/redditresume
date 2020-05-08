@@ -6,6 +6,8 @@ export default {
     axios
       .get(`${url}api/v1/post/top`)
       .then(resp => {
+        // posts should already be sorted by vote, if not fix here
+        resp.data = resp.data.sort(function(a, b){return b['votes'] - a['votes']})
         resp.data.forEach(post => {
           commit('APPEND_TOP_POST', post);
         });
