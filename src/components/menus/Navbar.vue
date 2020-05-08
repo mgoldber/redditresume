@@ -3,8 +3,8 @@
     app
     color="white"
   >
-    <span class="icon"><v-icon>mdi-reddit</v-icon></span>
-    <v-toolbar-title class="website-name" color="primary" @click="$router.push('/')">MARKIT</v-toolbar-title>
+    <span class="icon"><v-icon @click="$router.push('/')">mdi-rabbit</v-icon></span>
+    <v-toolbar-title :style="{ cursor: 'pointer' }" class="website-name" color="primary" @click="$router.push('/')">MARKIT</v-toolbar-title>
     <v-menu
       v-model="communities"
       :disabled="disabled"
@@ -35,6 +35,9 @@
           :to="'/' + item.name + '/' + item._id"
           replace
         >
+          <v-list-item-icon>
+            <v-icon v-text="getSubredditIcon(item.name)"></v-icon>
+          </v-list-item-icon>
           <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item>
       </v-list>
@@ -117,7 +120,7 @@
           this.setSubreddit(to.params.subredditName);
         } 
         else if (to.name === "homeSub") {
-          this.setSubreddit('r/home')
+          this.setSubreddit('Home')
         }
         else {
           this.setSubreddit(to.name)
@@ -129,7 +132,24 @@
         this.currentSubreddit = title;
       },
       getSubreddit() {
-        return this.$route.name === 'ADetailedPost' ? this.$route.params.subredditName :  this.$route.name === 'homeSub' ? 'r/home' : 'r/' + this.$route.name
+        return this.$route.name === 'ADetailedPost' ? this.$route.params.subredditName :  this.$route.name === 'homeSub' ? 'Home' : this.capitalizeFirst(this.$route.name)
+      },
+      capitalizeFirst(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+      },
+      getSubredditIcon(subreddit) {
+        switch (subreddit) {
+          case 'Home':
+            return 'mdi-rabbit'
+          case 'Jobs':
+            return 'mdi-briefcase'
+          case 'Projects':
+            return 'mdi-code-braces'
+          case 'AMA':
+            return 'mdi-account-heart'
+          default:
+            return 'mdi-rabbit'
+        }
       }
     },
   }

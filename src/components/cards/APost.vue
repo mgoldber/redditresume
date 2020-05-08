@@ -49,7 +49,7 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card" :class="{'pl-3': $vuetify.breakpoint.smAndDown}"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card" :class="{'pl-3': $vuetify.breakpoint.smAndDown}"><v-icon>mdi-rabbit</v-icon> m/{{ capitalizeFirst(post.subredditName) }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
               <v-card-text v-if="show" class="text--primary heading" :class="{'pl-3': $vuetify.breakpoint.smAndDown}">
                 <div>{{ post.title }}</div>
@@ -112,6 +112,11 @@
     created: function() {
       // Change the format of the post based on the subreddit that the post is made in
       if (this.post.subredditName !== 'jobs') this.show = true;
+    },
+    methods: {
+      capitalizeFirst(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
+      }
     }
   };
 </script>

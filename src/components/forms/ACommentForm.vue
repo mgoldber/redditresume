@@ -20,7 +20,7 @@
           <v-text-field
             v-model="name"
             class="comment-name"
-            placeholder="MarkG (pls use real name)"
+            placeholder="MarkG (please use real name)"
             :disabled="disabled"
             required
           >
@@ -100,7 +100,7 @@
         noResize: true,
         outlined: false,
         persistentHint: false,
-        placeholder: 'Mark is the best coworker / teacher I\'ve ever had. \n\nThis form will send an email to Mark before actually showing up on the site.',
+        placeholder: 'Write something nice about Mark here. \n\nThis form will send an email to Mark before actually showing up on the site.',
         rounded: false,
         rowHeight: 24,
         rows: 5,

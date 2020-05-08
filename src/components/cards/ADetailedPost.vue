@@ -42,7 +42,7 @@
           <v-row
             class="flex-column ma-1 fill-height"
           >
-            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-reddit</v-icon> r/{{ post.subredditName }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+            <v-card-subtitle class="pb-0 content-card info-row"><v-icon>mdi-rabbit</v-icon> m/{{ capitalizeFirst(post.subredditName) }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
             <v-card-title v-if="show" class="heading text--primary">
               <p>{{ post.title }}</p>
@@ -185,6 +185,9 @@
       },
       getSubCommentArray: function(commentId) {
         return this.subcomments.filter((subcomment) => subcomment.commentId === commentId);
+      },
+      capitalizeFirst(name) {
+        return name.charAt(0).toUpperCase() + name.slice(1);
       }
     }
   };

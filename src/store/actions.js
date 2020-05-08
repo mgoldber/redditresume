@@ -21,6 +21,8 @@ export default {
       .get(`${url}api/v1/subreddit`)
       .then(resp => {
         resp.data.forEach(subreddit => {
+          // Capitalize the first letter of the subreddit name
+          subreddit.name = subreddit.name.charAt(0).toUpperCase() + subreddit.name.slice(1)
           commit('APPEND_SUBREDDIT', subreddit);
         })
       })
