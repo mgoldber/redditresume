@@ -58,46 +58,30 @@
             color="primary"
             :disabled="disabled"
             class="mr-4 submit-btn" 
-            @click.stop="dialog = true"
+            @click.stop="submitComment"
           >Comment
           </v-btn>
         </v-row>
       </v-card-actions>
-      <v-dialog
-        v-model="dialog"
-        max-width="290"
-      >
-        <v-card>
-          <v-spacer></v-spacer>
-          <v-card-title class="headline">Support Mark?</v-card-title>
-          <v-card-text>Are you sure you want to show your undying support for your best friend Mark?</v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-
-            <v-btn
-              color="green darken-1"
-              text
-              @click="dialog = false"
-            >
-              No, hate him
-            </v-btn>
-            <v-btn
-              color="green darken-1"
-              text
-              @click="submit"
-            >
-              Yes, love him
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      <adialogbox ref="dialogComp" :dialogData="{
+        title: 'Support Mark?',
+        body: 'Are you sure you want to show your undying support for your best friend Mark?',
+        rejectText: 'No, hate him',
+        confirmText: 'Yes, love him',
+        sendFunc: submit,
+      }" />
     </v-card>
   </v-form>
 </template>
 
 <script>
+  import ADialogBox from '@/components/dialogs/ADialogBox.vue'
+
   export default {
     name: 'ACommentForm',
+    components: {
+      'adialogbox': ADialogBox,
+    },
     data: function() {
       return {
         name: '',
@@ -125,13 +109,13 @@
         solo: false,
       }
     },
-    mounted: function() {
-      
-    },
     methods: {
+      submitComment() {
+        this.$refs.dialogComp.setValue(true);
+      },
       submit() {
         this.$store.dispatch('send_comment_form', { name: this.name, comment: this.comment });
-        this.dialog = false;
+        this.$refs.dialogComp.setValue(false);
       },
       isDisabled() {
         return this.$store.state.comments.length > 0 ? true : false

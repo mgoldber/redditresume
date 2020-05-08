@@ -78,7 +78,7 @@
                 </v-avatar>
               </div>
 
-              <thepostactions :post="post" />
+              <thepostactions :post="post" :isDetailed="false" />
             </v-row>
           </v-col>
         </v-row>
