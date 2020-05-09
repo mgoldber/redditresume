@@ -61,7 +61,7 @@
                 </v-list-item-content>
 
                 <v-list-item-avatar
-                  class="ma-3"
+                  class="ma-3 hidden-sm-and-down"
                   size="100"
                   tile
                 >
@@ -70,10 +70,9 @@
               </v-list-item>
             </v-card>
 
-            <v-card-text class="text--primary">
+            <v-card-text v-if="podcasts" class="text--primary">
               <div 
                 id="buzzsprout-large-player-842749"
-                v-if="podcasts"
               >
               </div>
             </v-card-text>
