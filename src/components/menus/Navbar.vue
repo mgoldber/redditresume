@@ -22,7 +22,7 @@
           depressed
           class="subredditBtn"
         >
-          <v-icon left>mdi-ufo-outline</v-icon>
+          <v-icon v-text="getSubredditIcon(currentSubreddit)" left></v-icon>
           {{ currentSubreddit }}
           <v-icon right>mdi-menu-down</v-icon>
         </v-btn>
@@ -135,6 +135,7 @@
         return name.charAt(0).toUpperCase() + name.slice(1);
       },
       getSubredditIcon(subreddit) {
+        subreddit = this.capitalizeFirst(subreddit)
         switch (subreddit) {
           case 'Home':
             return 'mdi-rabbit'

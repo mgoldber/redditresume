@@ -49,7 +49,7 @@
             <v-row
               class="flex-column ma-1 fill-height"
             >
-              <v-card-subtitle class="pb-0 content-card" :class="{'pl-3': $vuetify.breakpoint.smAndDown}"><v-icon>mdi-rabbit</v-icon> m/{{ capitalizeFirst(post.subredditName) }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
+              <v-card-subtitle class="pb-0 content-card" :class="{'pl-3': $vuetify.breakpoint.smAndDown}"><v-icon v-text="getSubredditIcon(post.subredditName)"></v-icon> m/{{ capitalizeFirst(post.subredditName) }} • Posted by u/{{ post.author }} • {{ post.dateRange }}</v-card-subtitle>
 
               <v-card-text v-if="show" class="text--primary heading" :class="{'pl-3': $vuetify.breakpoint.smAndDown}">
                 <div>{{ post.title }}</div>
@@ -116,6 +116,21 @@
     methods: {
       capitalizeFirst(name) {
         return name.charAt(0).toUpperCase() + name.slice(1);
+      },
+      getSubredditIcon(subreddit) {
+        subreddit = this.capitalizeFirst(subreddit)
+        switch (subreddit) {
+          case 'Home':
+            return 'mdi-rabbit'
+          case 'Jobs':
+            return 'mdi-briefcase'
+          case 'Projects':
+            return 'mdi-code-braces'
+          case 'AMA':
+            return 'mdi-account-heart'
+          default:
+            return 'mdi-rabbit'
+        }
       }
     }
   };
