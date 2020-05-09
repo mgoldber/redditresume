@@ -4,7 +4,7 @@
     color="white"
   >
     <span class="icon"><v-icon @click="$router.push('/')">mdi-rabbit</v-icon></span>
-    <v-toolbar-title :style="{ cursor: 'pointer' }" class="website-name" color="primary" @click="$router.push('/')">MARKIT</v-toolbar-title>
+    <v-toolbar-title :style="{ cursor: 'pointer' }" class="website-name hidden-xs-and-down" color="primary" @click="$router.push('/')">MARKIT</v-toolbar-title>
     <v-menu
       v-model="communities"
       :disabled="disabled"
