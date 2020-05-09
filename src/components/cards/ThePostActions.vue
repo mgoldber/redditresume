@@ -10,6 +10,7 @@
       <span class="subheading mr-2 interactive-item"><v-icon class="action-icon">mdi-comment</v-icon>{{ numOfComments }} comments</span>
       <v-btn
         depressed
+        class="action-btn"
         color="transparent"
         v-if="isDetailed"
         @click.stop="award"
@@ -28,6 +29,7 @@
       }" />
       <v-btn
         depressed
+        class="action-btn"
         color="transparent"
         v-if="isDetailed"
         @click.stop="share"
@@ -46,6 +48,7 @@
       }" />
       <v-btn
         depressed
+        class="action-btn"
         color="transparent"
         v-if="isDetailed"
         @click.stop="save"
@@ -101,6 +104,9 @@
 <style scoped>
   .action-icon {
     margin-right: 5px;
+  }
+  .action-btn {
+    padding: 0!important;
   }
   .interactive-item {
     margin-right: 10px;
