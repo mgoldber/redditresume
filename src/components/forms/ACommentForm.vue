@@ -65,9 +65,9 @@
       </v-card-actions>
       <adialogbox ref="dialogComp" :dialogData="{
         title: 'Support Mark?',
-        body: 'Are you sure you want to show your undying support for your best friend Mark?',
-        rejectText: 'No, hate him',
-        confirmText: 'Yes, love him',
+        body: 'Are you sure you want to submit this comment?',
+        rejectText: 'No, maybe later',
+        confirmText: 'Yes, absolutely',
         sendFunc: submit,
       }" />
     </v-card>

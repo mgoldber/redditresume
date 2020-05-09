@@ -43,7 +43,6 @@
       </v-list>
     </v-menu>
     <v-spacer />
-
     <v-spacer />
     <v-menu
       v-model="user"
@@ -57,12 +56,10 @@
     >
       <template v-slot:activator="{ on }">
         <v-btn
-          color="transparent"
+          icon
           v-on="on"
-          depressed
         >
-          MarkG
-          <v-icon right>mdi-menu-down</v-icon>
+          <v-icon size="35">mdi-account</v-icon>
         </v-btn>
       </template>
       <v-list>
