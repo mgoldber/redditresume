@@ -14,11 +14,12 @@
     },
     data: function() {
       return {
-        err: "",
+        err: "Failed to get the top posts",
         posts: this.$store.state.topPosts,
       };
     },
     created: function() {
+      console.log("Getting the top posts");
       if (this.$store.state.topPosts.length === 0) this.$store.dispatch('fetch_top_posts');
     }
   }
