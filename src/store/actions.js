@@ -5,6 +5,7 @@ export default {
   fetch_top_posts: ({ commit }) => {
     let topPostsArray = [
       {
+        "_id": "1",
         "subredditName": "jobs",
         "title": "Product Manager & Instructor",
         "author": "JunoCollegeOfTechnology",
@@ -15,11 +16,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "2",
         "subredditName": "jobs",
         "title": "Technical Analytics Specialist",
         "author": "Hootsuite",
@@ -30,11 +33,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "3",
         "subredditName": "jobs",
         "title": "Developer, Business Operations",
         "author": "League",
@@ -45,11 +50,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "4",
         "subredditName": "jobs",
         "title": "Technical Project Coordinator - Internship",
         "author": "Magnet Forensics",
@@ -60,11 +67,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "5",
         "subredditName": "jobs",
         "title": "Software Developer - Internship",
         "author": "Apple Inc.",
@@ -75,11 +84,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "6",
         "subredditName": "jobs",
         "title": "Software Developer - Internship",
         "author": "NthGen Software - Creators of TradeRev.",
@@ -90,11 +101,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "7",
         "subredditName": "projects",
         "title": "SelfieRun - iPhone Game",
         "author": "Mark Goldberg",
@@ -105,11 +118,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "8",
         "subredditName": "projects",
         "title": "Teching Out Podcast",
         "author": "Mark Goldberg",
@@ -119,12 +134,19 @@ export default {
         "img": "techingoutcover.png",
         "comments": [
           {
-            "author": "Cool guy",
-            "body": "Mark is cool"
-          }
+            "author": "dragonballz1104",
+            "body": "I really really like this podcast. I've been recommending it to all my friends too. It's just a great tech podcast all around.",
+            "subcomments": []
+          },
+          {
+            "author": "techlover69",
+            "body": "Really liking this so far. Can't wait to listen to the rest.",
+            "subcomments": []
+          },
         ]
       },
       {
+        "_id": "9",
         "subredditName": "AMA",
         "title": "My name is Mark and this is my website. Ask me anything...",
         "author": "Mark Goldberg",
@@ -135,11 +157,13 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
       {
+        "_id": "10",
         "subredditName": "jobs",
         "title": "Senior Product Manager",
         "author": "GoBolt",
@@ -150,7 +174,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       }
@@ -212,7 +237,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -227,7 +253,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -242,7 +269,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -257,7 +285,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -272,7 +301,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -287,7 +317,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -302,7 +333,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ] 
       }
@@ -335,7 +367,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
@@ -350,7 +383,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       }, 
@@ -379,7 +413,8 @@ export default {
         "comments": [
           {
             "author": "Cool guy",
-            "body": "Mark is cool"
+            "body": "Mark is cool",
+            "subcomments": []
           }
         ]
       },
