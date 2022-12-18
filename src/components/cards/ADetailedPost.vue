@@ -102,12 +102,10 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import ThePostActions from '@/components/cards/ThePostActions.vue'
   import ACommentForm from '@/components/forms/ACommentForm.vue'
   import AComment from '@/components/cards/AComment.vue'
-
-  const url = process.env.VUE_APP_API_URL
+  // import topPostsModule from '../modules/top_posts.js'
 
   export default {
     name: "ADetailedPost",
@@ -140,6 +138,7 @@
       this.injectScript('https://www.buzzsprout.com/842749.js?container_id=buzzsprout-large-player-842749&player=large');
     },
     created: function() {
+      this.post = topPostsModule.topPostsArray;
       this.getPostDetails(this.$route.params.id);
       this.getPostComments(this.$route.params.id);
       // Fetch all of the available sub-comments, probably horrendously slow
@@ -153,35 +152,40 @@
         document.head.appendChild(newScript);
       },
       getPostDetails: function(postId) {
-        axios.get(`${url}api/v1/post/${postId}`)
-          .then((res) => {
-            this.post = res.data;
-            if (this.post.subredditName !== 'jobs') this.show = true;
-            if (this.post.subredditName === 'jobs') this.showCommentForm = true;
-            if (this.post.title === 'Teching Out Podcast') this.podcasts = true;
-          })
-          .catch((err) => {
-            console.log(err);
-          })
+        let specificPost = this.post.find(x => x.id === postId);
+        console.log(specificPost);
+        console.log(postId);
+        // axios.get(`${url}api/v1/post/${postId}`)
+        //   .then((res) => {
+        //     this.post = res.data;
+        //     if (this.post.subredditName !== 'jobs') this.show = true;
+        //     if (this.post.subredditName === 'jobs') this.showCommentForm = true;
+        //     if (this.post.title === 'Teching Out Podcast') this.podcasts = true;
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   })
       },
       getPostComments: function(postId) {
-        axios.get(`${url}api/v1/comment/${postId}`)
-          .then((res) => {
-            this.comments = res.data;
-          })
-          .catch((err) => {
-            console.log(err);
-          })
+        console.log(postId)
+        // axios.get(`${url}api/v1/comment/${postId}`)
+        //   .then((res) => {
+        //     this.comments = res.data;
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   })
       },
       getSubComments: function() {
-        axios.get(`${url}api/v1/subcomment`)
-          .then((res) => {
-            this.subcomments = res.data;
-            return res;
-          })
-          .catch((err) => {
-            console.log(err);
-          })
+        console.log('Getting sub comments')
+        // axios.get(`${url}api/v1/subcomment`)
+        //   .then((res) => {
+        //     this.subcomments = res.data;
+        //     return res;
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   })
       },
       getSubCommentArray: function(commentId) {
         return this.subcomments.filter((subcomment) => subcomment.commentId === commentId);

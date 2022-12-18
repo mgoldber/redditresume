@@ -88,7 +88,6 @@
 
 <script>
   import ThePostActions from '@/components/cards/ThePostActions.vue';
-
   export default {
     name: 'APost',
     components: {
